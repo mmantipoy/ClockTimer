@@ -64,7 +64,7 @@ export function TimerSettup({setModal, intervalL, setTime}: TimerSettupProps){
           case 'hs':
             
             if ( tempHours > 24 ){ 
-              console.log('object');
+ 
               setTempHours( 0 )
               c.value = '0'
           } else {
@@ -72,28 +72,36 @@ export function TimerSettup({setModal, intervalL, setTime}: TimerSettupProps){
             setTempHours( t => t+ 1)
             let a = tempHours + 1
             c.value = a.toString()
-            console.log(tempHours);
-            console.log(c.value);
+
           }
             
             break
           case 'ms':
-            if ( tempMinutes > 60 ) { 
-              setTempMinutes( 0 )
-              c.value = '0'
-          } else {
-            setTempMinutes( t => t+1)
-            c.value = tempMinutes.toString()}
-            
-            break
+              if ( tempMinutes > 60 ){ 
+  
+                setTempMinutes( 0 )
+                c.value = '0'
+            } else {
+              console.log('object---');
+              setTempMinutes( t => t+ 1)
+              let a = tempMinutes + 1
+              c.value = a.toString()
+
+            }
+              break
+
           case 'ss':
-            if ( tempSeconds > 60 ) { 
+            if ( tempSeconds > 60 ){ 
+  
               setTempSeconds( 0 )
               c.value = '0'
           } else {
-            setTempSeconds( t => t+1)
-            c.value = tempSeconds.toString()}
-            
+            console.log('object---');
+            setTempSeconds( t => t+ 1)
+            let a = tempSeconds + 1
+            c.value = a.toString()
+
+          }
             break
         
           }
