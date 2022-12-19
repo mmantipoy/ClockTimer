@@ -181,13 +181,13 @@ const Timer = () => {
           onClick={onTimerStart}
           className='timer_buttons_button'
         >
-          Start {mode}
+          Start
         </button>
         <button
           onClick={onTimerStop}
           className='timer_buttons_button'
         >
-          Stop {mode}
+          Stop
         </button>
       </div>
       

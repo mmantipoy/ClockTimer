@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 interface TimerSettupProps {
 
@@ -10,11 +10,13 @@ interface TimerSettupProps {
 
 export function TimerSettup({setModal, intervalL, setTime}: TimerSettupProps){  
     
-    
+      const ref1 = useRef(null)
       const [tempHours, setTempHours] = useState(0)
       const [tempMinutes, setTempMinutes] = useState(0)
       const [tempSeconds, setTempSeconds] = useState(0)
-    
+      useEffect ( () => {
+        console.log(ref1.current);
+      }, [ref1.current])
       const tempTimeChange = (id: string) => {
     
         let c = (document.querySelector('#'+id) as HTMLInputElement)
@@ -55,16 +57,24 @@ export function TimerSettup({setModal, intervalL, setTime}: TimerSettupProps){
       }
     
       const tempTimeInc = (id: string) => {
+        
         let c = (document.querySelector('#'+id) as HTMLInputElement)
+        console.log(c.value);
         switch (id) {
           case 'hs':
             
             if ( tempHours > 24 ){ 
+              console.log('object');
               setTempHours( 0 )
               c.value = '0'
           } else {
+            console.log('object---');
             setTempHours( t => t+ 1)
-            c.value = tempHours.toString()}
+            let a = tempHours + 1
+            c.value = a.toString()
+            console.log(tempHours);
+            console.log(c.value);
+          }
             
             break
           case 'ms':
@@ -104,7 +114,7 @@ export function TimerSettup({setModal, intervalL, setTime}: TimerSettupProps){
                 width={40}
                 src='src\assets\png\arrow-up.png' />
               </button>
-              <input onChange={() => tempTimeChange(id)} id={id} className='timer_settings_time' type="text" placeholder='0' />
+              <input ref={ref1} onChange={() => tempTimeChange(id)} id={id} className='timer_settings_time' type="text" placeholder='0' />
               <button  className='timer_settings_arrow'>
                 <img 
                 height={20}
